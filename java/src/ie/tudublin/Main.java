@@ -19,7 +19,7 @@ public class Main
         // Tara Tara
         Cat ginger = new Cat("Ginger");
 
-        for (int lives=ginger.getLives(); lives>0; lives--)
+        for (int i=9; i>0; i--)
         {
             ginger.kill();
         }

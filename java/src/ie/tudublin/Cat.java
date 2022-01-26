@@ -6,25 +6,24 @@ public class Cat extends Animal
         super(name);
     }
 
-    private int numLives;
+    private int numLives=9;
 
     public int getLives()
     {
-        return this.numLives=9;
+        return this.numLives;
     }
 
     public void kill()
     {
-        if (numLives==0)
+        if (numLives>0)
         {
-            this.numLives--;
-            System.out.println("dead");
+            numLives--;
+            System.out.println("Ouch!");
         }
         else
         {
-            System.out.println("Ouch!");
+            System.out.println("dead");
         }
-
         return;
     }
 }
