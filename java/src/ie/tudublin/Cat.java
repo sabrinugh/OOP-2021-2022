@@ -1,24 +1,27 @@
 package ie.tudublin;
 public class Cat extends Animal
 {
-    public Cat(String name)
-    {
-        super(name);
+    private int numLives;
+
+    public int getNumLives() {
+        return numLives;
     }
 
-    private int numLives=9;
-
-    public int getLives()
-    {
-        return this.numLives;
+    public void setNumLives(int numLives) {
+        this.numLives = numLives;
+    }
+    
+    public Cat(String name) {
+        super(name);
+        numLives = 9;
     }
 
     public void kill()
     {
         if (numLives>0)
         {
-            numLives--;
             System.out.println("Ouch!");
+            numLives--;
         }
         else
         {

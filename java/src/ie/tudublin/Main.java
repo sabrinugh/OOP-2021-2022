@@ -19,9 +19,10 @@ public class Main
         // Tara Tara
         Cat ginger = new Cat("Ginger");
 
-        for (int i=9; i>0; i--)
+        while (ginger.getNumLives() > 0)
         {
             ginger.kill();
         }
+        ginger.kill();
     }
 }
