@@ -18,5 +18,6 @@ public class Main
         // Tara Misty
         // Tara Tara
         
+        new BugZap();
     }
 }
