@@ -6,7 +6,7 @@ public class BugZap extends PApplet{
     }
     
     public void setup() {
-        //
+        // 
     }
 
     public void draw() {
