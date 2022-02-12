@@ -26,8 +26,7 @@ public class HelloProcessing extends PApplet
 		y1dir = random(-range, range);
 		y2dir = random(-range, range);
 
-		smooth();
-		
+		smooth();	
 	}
 
 	float x1, y1, x2, y2;
