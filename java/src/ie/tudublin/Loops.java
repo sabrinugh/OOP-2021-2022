@@ -56,6 +56,8 @@ public class Loops extends PApplet
 					rect(map(i, 0, bars, 0, 500), 0, w, height);
 				}
 				break;
+			}
+
 			case 1: {
 				background(0);
 				int squares = (int) (mouseX / 20.0f);
@@ -70,6 +72,7 @@ public class Loops extends PApplet
 			}
 				break;
 			case 2:
+			{
 				background(255);
 				int circles = (int) (mouseX / 20.0f);
 				offset += (mouseY / 100.0f);
@@ -84,6 +87,7 @@ public class Loops extends PApplet
 						circle(x, y, d);
 					}
 				}
+			} // Scope
 
 				// map(a,b,c,d,e);
 				// a = inputvalue
@@ -92,7 +96,7 @@ public class Loops extends PApplet
 
 				// map(-2, 10, 90, 200, 233);
 
-			case 2: // Row of circles
+			case 3: // Row of circles
 			{
 				// background(); Set white background
 				int circles = (int) (mouseX/20.0f);
@@ -102,10 +106,10 @@ public class Loops extends PApplet
 					noStroke();
 					fill(map(i, 0, circles, 0, 255), 255, 255);
 					circle(map(i, 0, circles-1, d/2, width-(d-2.0f)),height/2, d);
-				}
-			} // Scope; localises variables
+				} // end for
+			}// Scope; localises variables
 
-			case 3: // Rows of circles
+			case 4: // Rows of circles
 			{
 				background(255); // Set white background
 				int circles = (int) (mouseX/20.0f);
@@ -121,11 +125,9 @@ public class Loops extends PApplet
 						fill(map(i, 0, circles, 0, 255), 255, 255);
 						float y = map(i, 0, circles-1, d/2.0f, width-(d/2.0f));
 						circle(x, y, d);
-					}
-				}
-			} // Scope; localises variables
-
-
+					} // end inner for
+				} // end for
+			} // Scope
 		}
 	}
 }
