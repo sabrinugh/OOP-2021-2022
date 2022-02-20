@@ -2,13 +2,8 @@ package ie.tudublin;
 
 import processing.core.PApplet;
 
-<<<<<<< HEAD
 public class Loops extends PApplet
 {
-=======
-public class Loops extends PApplet {
-
->>>>>>> master
 	int mode = 0;
 
 	public void settings() {
@@ -46,20 +41,10 @@ public class Loops extends PApplet {
 		return d + ((howFar / r1) * r2);
 	}
 
-<<<<<<< HEAD
-	float offset =0;
-	
-	public void draw()
-	{
-		
-		switch(mode)	
-		{
-=======
 	float offset = 0;
 
 	public void draw() {
 		switch (mode) {
->>>>>>> master
 			case 0:
 			{
 				background(0);
@@ -71,24 +56,6 @@ public class Loops extends PApplet {
 					rect(map(i, 0, bars, 0, 500), 0, w, height);
 				}
 				break;
-<<<<<<< HEAD
-			}
-
-			case 1:
-			{
-				background(0);
-				int squares = (int) (mouseX / 20.0f); // Mouse position determines size of squares
-				float h = width / (float) squares; // Number of squares going across
-				for (int i=0; i<squares; i++) {
-					noStroke();
-					fill(map(i, 0, squares, 0, 255), 255, 255);
-					float x = map(i, 0, squares, 0, width); // Height
-					rect(x, x, h, h);
-					rect((width-h), -x, x, h, h);
-				}
-			} // Gives it scope; making all variables localised
-
-=======
 			case 1: {
 				background(0);
 				int squares = (int) (mouseX / 20.0f);
@@ -101,7 +68,6 @@ public class Loops extends PApplet {
 					rect((width - h) - x, x, h, h);
 				}
 			}
->>>>>>> master
 				break;
 			case 2:
 				background(255);
