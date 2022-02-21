@@ -53,6 +53,17 @@ public class Arrays extends PApplet{
         }
         println("Max rainfall: " + rainfall[maxIndex] + "in month " + months[maxIndex]);
         println("Min rainfall: " + rainfall[minIndex] + "in month " + months[minIndex]);
+
+        float avg = 0;
+        float sum = 0;
+        // Finding the average
+        for (int l=0; l<rainfall.length; l++) {
+            sum = sum + rainfall[l];
+        }
+        avg = sum / rainfall.length;
+        println("Average :" + avg);
+
+        
     }
 
     public void draw() {

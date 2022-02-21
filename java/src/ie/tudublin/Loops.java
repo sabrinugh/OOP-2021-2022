@@ -127,7 +127,8 @@ public class Loops extends PApplet
 						circle(x, y, d);
 					} // end inner for
 				} // end for
-			} // Scope
+			} // Scope for case 4
+
 		}
 	}
 }
