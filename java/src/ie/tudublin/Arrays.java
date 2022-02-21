@@ -6,6 +6,10 @@ public class Arrays extends PApplet{
     float[] rainfall = {45, 37, 55, 26, 38, 50, 79, 48, 104, 31, 100, 58};
     String[] months = {"JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"};
 
+    // Finding the minimum and max values in the rainfall array
+    int minIndex = 0;
+    int maxIndex = 0;
+    
     // Alternative ways of creating arrays in Java
     // float[] array1 = new float[100];
     // float[] array2;  // This gives a null pointer exception. No memory has been allocated to the array
@@ -39,9 +43,7 @@ public class Arrays extends PApplet{
             println(rainfall[i] + "/t" + months[i]);
         }
 
-        // Finding the minimum and max values in the rainfall array
-        int minIndex = 0;
-        int maxIndex = 0;
+
 
         for (int k=0; k<rainfall.length; k++) {
             if (rainfall[k] < rainfall[minIndex]) {
@@ -62,11 +64,27 @@ public class Arrays extends PApplet{
         }
         avg = sum / rainfall.length;
         println("Average :" + avg);
-
-        
     }
 
     public void draw() {
+        background(0);
+        colorMode(HSB);
+        float w = width / (float) rainfall.length;
 
+        // General layout to draw a histogram with array contents
+        for (int i=0; i< rainfall.length; i++) {
+            noStroke();
+            float x = i *w;
+            // Another method of calculating the size of the bars
+            // float x = map(i, 0, rainfall.length, 0, width);
+            float c = map (i, 0, rainfall.length, 0, 255);
+            fill(c, 255, 255);
+            float h = map (rainfall[i], 0, rainfall[maxIndex], 0, -height); // Brings to height of the screen
+            // rect(x, height, w, -rainfall[i]); // Rainfall value gets drawn upswards than down bc of the - sign
+            rect(x, height, w, h);
+            fill(255);
+            textAlign(CENTER, CENTER); // Aligns text
+            text(months[i], x+(w/2), height-50); // x+(w/2) makes it fit the center of the bar
+        }
     }
 }
