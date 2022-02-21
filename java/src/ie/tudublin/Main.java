@@ -9,12 +9,17 @@ public class Main
         processing.core.PApplet.runSketch( a, new Loops());
     }
 
+    public static void arrays()
+	{
+		String[] a = {"MAIN"};
+        processing.core.PApplet.runSketch( a, new Arrays());
+    }
+
     /*
     Main running code
     */
     public static void main(String[] args)
     {
-        loops();
-        
+        arrays();
     }
 }
