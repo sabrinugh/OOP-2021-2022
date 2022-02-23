@@ -2,84 +2,133 @@ package ie.tudublin;
 
 import processing.core.PApplet;
 
-public class DrawingExercise extends PApplet {
-
-    Star[] stars = new Star[500];
-
-    float speed;
-
-    class Star {
-        float x, y, z;
-        float pz; // previous z
-
-        Star() {
-            x = random(-width, width);
-            y = random(-height, height);
-            //using z to divide by some value so they get bigger a smove to edge
-            z = random(width); //3d to create illusion of stars moving fast
-        
-            //making more variable to help create streak from their initial location
-            //to their current location
-            pz = z; 
-        }
-
-        void update() {
-            //speed is global so that it can be controlled by the mouse
-            z = z - speed;
-            if (z < speed){
-                z = width;
-                x = random(-width, width);
-                y = random(-height, height);
-                pz = z;
-            }
-
-        }
-
-        void show() {
-            fill(255);
-            noStroke();
-
-            //we want them to start
-            float sx = map(x / z, 0, 1, 0, width);
-            float sy = map(y / z, 0, 1, 0, height);
-
-            //as the stars get closer they get bigger
-            float r = map(z, 0, width, 16, 0);
-            //ellipse(sx, sy, r, r);
-
-            float px = map(x / pz, 0, 1, 0, width);
-            float py = map(y / pz, 0, 1, 0, height);
-
-            pz = z;
-
-            stroke(255);
-            line(px, py, sx, sy);
-        }
-
-    }
+public class Loops extends PApplet
+{
+	int mode = 0;
 
 	public void settings() {
-        size(500, 500);
-
+		size(500, 500);
 	}
 
 	public void setup() {
-
-        for(int i = 0; i < stars.length; i++){
-            stars[i] = new Star();
-        }
+		colorMode(HSB);
 
 	}
 
-    public void draw() {
+	public void keyPressed() {
+		if (key >= '0' && key <= '9') {
+			mode = key - '0';
+		}
+		println(mode);
+	}
 
-        //mouse can determin the speed
-        speed = map(mouseX, 0, width, 0, 50);
-        background(0);
-        translate(width/2, height/2); //we want to be translating to the centre not the top left
-        for(int i = 0; i < stars.length; i++){
-            stars[i].update();
-            stars[i].show();
-        }
-    }
+	float magicMap(float a, float b, float c, float d, float e) {
+		float output;
+		a -= b;
+		c -= b;
+		e -= d;
+
+		output = ((a / c) * e) + d;
+
+		return output;
+	}
+
+	float magicMap1(float a, float b, float c, float d, float e) {
+		float r1 = c - b;
+		float r2 = e - d;
+		float howFar = a - b;
+
+		return d + ((howFar / r1) * r2);
+	}
+
+	float offset = 0;
+
+	public void draw() {
+		switch (mode) {
+			case 0:
+			{
+				background(0);
+				int bars = (int) (mouseX / 20.0f);
+				float w = width / (float) bars;
+				for (int i = 0; i < bars; i++) {
+					noStroke();
+					fill(map(i, 0, bars, 0, 255), 255, 255);
+					rect(map(i, 0, bars, 0, 500), 0, w, height);
+				}
+				break;
+			}
+
+			case 1: {
+				background(0);
+				int squares = (int) (mouseX / 20.0f);
+				float h = width / (float) squares;
+				for (int i = 0; i < squares; i++) {
+					noStroke();
+					fill(map(i, 0, squares, 0, 255), 255, 255);
+					float x = map(i, 0, squares, 0, width);
+					rect(x, x, h, h);
+					rect((width - h) - x, x, h, h);
+				}
+			}
+				break;
+			case 2:
+			{
+				background(255);
+				int circles = (int) (mouseX / 20.0f);
+				offset += (mouseY / 100.0f);
+				float d = width / (float) circles;
+				for (int j = 0; j < circles; j++) {
+					for (int i = 0; i < circles; i++) {
+						noStroke();
+						float c = map((i + j + offset), 0, circles * 2, 0, 255) % 256;
+						fill(c, 255, 255);
+						float x = map(i, 0, circles - 1, d / 2.0f, width - (d / 2.0f)); 
+						float y = map(j, 0, circles - 1, d / 2.0f, width - (d / 2.0f)); 
+						circle(x, y, d);
+					}
+				}
+			} // Scope
+
+				// map(a,b,c,d,e);
+				// a = inputvalue
+				// b - c - start and end of the first range
+				// d, e 0 - start and and of the end range
+
+				// map(-2, 10, 90, 200, 233);
+
+			case 3: // Row of circles
+			{
+				// background(); Set white background
+				int circles = (int) (mouseX/20.0f);
+				float d = width / (float) circles; // Diameter
+
+				for (int i=0; i<circles; i++) {
+					noStroke();
+					fill(map(i, 0, circles, 0, 255), 255, 255);
+					circle(map(i, 0, circles-1, d/2, width-(d-2.0f)),height/2, d);
+				} // end for
+			}// Scope; localises variables
+
+			case 4: // Rows of circles
+			{
+				background(255); // Set white background
+				int circles = (int) (mouseX/20.0f);
+				offset += mouseY; // Changes colour as mouse move up and down the screen
+				float d = width / (float) circles; // Diameter
+
+				for (int j=0; j<circles; j++) {
+					for (int i=0; i<circles; i++) {
+						noStroke();
+						float c = map((i+j+offset), 0, circles*2, 0, 255)%256; // Cycle throughout the 255 range
+						fill(c, 255, 255);
+						float x = map(i, 0, circles-1, d/2.0f, width-(d/2.0f));
+						fill(map(i, 0, circles, 0, 255), 255, 255);
+						float y = map(i, 0, circles-1, d/2.0f, width-(d/2.0f));
+						circle(x, y, d);
+					} // end inner for
+				} // end for
+			} // Scope for case 4
+
+		}
+	}
 }
