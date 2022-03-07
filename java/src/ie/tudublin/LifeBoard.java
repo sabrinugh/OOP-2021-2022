@@ -69,8 +69,8 @@ public class LifeBoard {
         int count = 0; 
 
         // The bit goes here
-        for (int x=row; x<=row; x++) {
-            for(int y=col; y<= col; y++) {
+        for (int x=row-1; x<=row+1; x++) {
+            for(int y=col-1; y<= col+1; y++) {
                 if (!(x==row && y==col)) {
                     if (isAlive(x, y)) {
                         count++;
