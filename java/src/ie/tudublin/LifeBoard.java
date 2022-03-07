@@ -48,7 +48,7 @@ public class LifeBoard {
                         next[row][col] = false;
                     } // end inner else
                 } else { // If the cell is dead
-                    if (count==3) { // IF there are neighbours, brings cell to life
+                    if (count==3) { // If there are neighbours, brings cell to life
                         next[row][col] = true;
                     } else { 
                         next[row][col] = false;
