@@ -11,8 +11,8 @@ public class Life extends PApplet {
 	// 4. 3 neighbours together create a new cell
 
 	public void settings() {
-		size(500, 500);
-		board = new LifeBoard(200, this);
+		size(1000, 1000);
+		board = new LifeBoard(500, this);
 		
 		board.randomise();
 		println(board.countCellsAround(1, 1));
