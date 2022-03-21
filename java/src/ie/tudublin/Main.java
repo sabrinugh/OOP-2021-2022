@@ -1,7 +1,5 @@
 package ie.tudublin;
 
-
-
 public class Main
 {
     public static void helloProcessing()
@@ -72,10 +70,7 @@ public class Main
     }
     public static void main(String[] args)
     {
-        colorfulLife();
-
-        // Tara Misty
-        // Tara Tara
+        bugZap();
         
     }
 }

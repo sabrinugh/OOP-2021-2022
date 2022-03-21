@@ -181,7 +181,7 @@ public class ColorfulLife extends PApplet {
         if (keyCode == '3')
         {
             drawCross();
-        }            
+        }
     }
 
     public void drawCross()
