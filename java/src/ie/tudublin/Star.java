@@ -4,7 +4,6 @@ import processing.data.TableRow;
 import processing.core.PApplet;
 
 public class Star {
-    PApplet pa;
 
     private boolean hab;
     private String displayName;
@@ -52,12 +51,7 @@ public class Star {
     public boolean isHab() {
         return hab;
     }
-
-
-    public void setHab(boolean hab) {
-        hab = hab;
-    }
-
+    
 
     public String getDisplayName() {
         return displayName;

@@ -27,6 +27,7 @@ public class StarMap extends PApplet {
         }
     }
 
+    
     void printStars() {
         for (Star s:stars) {
             System.out.println(s);
