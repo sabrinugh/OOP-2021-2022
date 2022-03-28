@@ -1,13 +1,17 @@
 package ie.tudublin;
 
 import processing.data.TableRow;
+import processing.core.PApplet;
 
 public class Star {
+    PApplet pa;
+
     private boolean hab;
     private String displayName;
     private float distance;
     private float Xg, Yg, zG;
     private float absMag;
+
 
     // Intantiating from table row parameter
     public Star(TableRow tr) {
@@ -115,9 +119,14 @@ public class Star {
     }
 
 
-    public void drawStar() {
-        
+    public void drawStars() {
+        float x = map(this.Xg, -5, 5, pa.border, this.Yg-pa.border);
+
+        // float x = map(i, -5, 5, border, width - border);
+        // line(x, border, x, height - border);
+        // line(border, x, width - border, x);
     }
+
 
 
 }

@@ -12,8 +12,7 @@ public class StarMap extends PApplet {
     ArrayList<Star> stars = new ArrayList<Star>(); // java.util.arraylist
 
     float border;
-    void drawGrid()
-    {
+    void drawGrid() {
         stroke(255, 0, 255); // Set line strokes to purple
         textAlign(CENTER, CENTER);
         textSize(20);
@@ -28,15 +27,14 @@ public class StarMap extends PApplet {
         }
     }
 
-    void printStars()
-    {
+    void printStars() {
         for (Star s:stars) {
             System.out.println(s);
         }
     }
 
-    void loadStars() // Load cvs file into program
-    {
+
+    void loadStars() { // Load cvs file into program 
         Table table = loadTable("HabHYG15ly.csv", "header");
         // Enhanced for loop - used for iterating over collections
         for (TableRow r:table.rows()) { // Iterate through all the rows available in the cvs file
@@ -50,8 +48,7 @@ public class StarMap extends PApplet {
     }
 
 
-    public void mouseClicked()
-    {
+    public void mouseClicked() {
         
     }
 
@@ -62,12 +59,10 @@ public class StarMap extends PApplet {
         printStars();
     }
 
-    public void drawStars()
-    {
+    public void drawStars() {
     }
 
-    public void draw() 
-    {
+    public void draw() {
         background(0);
         drawGrid();
     }
