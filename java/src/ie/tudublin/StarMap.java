@@ -57,9 +57,13 @@ public class StarMap extends PApplet {
         colorMode(RGB);
         loadStars();
         printStars();
+        drawStars();
     }
 
     public void drawStars() {
+        for (Star s:stars) {
+            s.render(this); // Passing in the parameter
+        }
     }
 
     public void draw() {

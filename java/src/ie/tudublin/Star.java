@@ -38,7 +38,7 @@ public class Star {
 
     // Creating constructor
     public Star(boolean hab, String displayName, float distance, float xg, float yg, float zG, float absMag) {
-        this.hab = hab; // Disambiguating between this instance and parameter 'hab'
+        this.hab = hab; // Disambiguating between 'this' instance and parameter 'hab'
         this.displayName = displayName;
         this.distance = distance;
         this.Xg = xg;
@@ -118,15 +118,24 @@ public class Star {
         this.absMag = absMag;
     }
 
+    
+    // Drawing location of stars on grid
+    public void render(StarMap pa) {
+        float x = PApplet.map(Xg, -5, -5, pa.border, pa.width-pa.border);
+        float y= PApplet.map(Yg, -5, 5, pa.border, pa.height-pa.border);
+    
+        pa.stroke(255, 255, 0);
+        pa.line(x, y-5, x, y+5);
+        pa.line(x-5, y, x+5, y);
 
-    public void drawStars() {
-        float x = map(this.Xg, -5, 5, pa.border, this.Yg-pa.border);
-
-        // float x = map(i, -5, 5, border, width - border);
-        // line(x, border, x, height - border);
-        // line(border, x, width - border, x);
+        pa.stroke(255, 0, 0); // red circle
+        pa.noFill();
+        pa.circle(x, y, absMag);
+        pa.fill(255);
+        pa.textAlign(PApplet.LEFT, PApplet.CENTER);  
+        pa.text(displayName, x+20, y);  
     }
-
+    
 
 
 }
