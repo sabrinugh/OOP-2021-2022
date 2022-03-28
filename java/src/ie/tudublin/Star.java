@@ -1,6 +1,6 @@
 package ie.tudublin;
 
-import javax.swing.text.TableView.TableRow;
+import processing.data.TableRow;
 
 public class Star {
     private boolean hab;
@@ -20,6 +20,15 @@ public class Star {
             tr.getFloat("Yg"), 
             tr.getFloat("Zg"), 
             tr.getFloat("AbsMag")
+        );
+    }
+
+    
+    // toString gets called implicitly regardless
+    @Override
+    public String toString() {
+        return "Star [Xg=" + Xg + ", Yg=" + Yg + ", absMag=" + absMag + ", displayName=" + displayName + ", distance="
+                + distance + ", hab=" + hab + ", zG=" + zG + "]";
     }
 
 
@@ -37,12 +46,12 @@ public class Star {
 
     // All encapsulation of important data fields
     public boolean isHab() {
-        return Hab;
+        return hab;
     }
 
 
     public void setHab(boolean hab) {
-        Hab = hab;
+        hab = hab;
     }
 
 
@@ -105,6 +114,10 @@ public class Star {
         this.absMag = absMag;
     }
 
+
+    public void drawStar() {
+        
+    }
 
 
 }
