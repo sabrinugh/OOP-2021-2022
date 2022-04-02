@@ -2,6 +2,8 @@ package ie.tudublin;
 
 import java.util.ArrayList;
 
+import com.apple.laf.AquaImageFactory.SlicedImageControl;
+
 import processing.core.PApplet;
 import processing.data.Table;
 import processing.data.TableRow;
@@ -44,13 +46,31 @@ public class StarMap extends PApplet {
         }
     }
 
+
     public void settings() {
         size(800, 800);
     }
 
-
+    Star first = null;
+    Star second = null;
+    
     public void mouseClicked() {
+        // Iterate through stars to find the first star clicked
+        for (Star s:stars) {
+            float x = map(s.getxG(), -5, 5, border, width-border);
+            float y = map(s.getyG(), -5, 5, border, height-border);
         
+            if (dist(mouseX, mouseY, x, y) < s.getAbsMag()) {
+                if (first == null) {
+                    first = s;
+                    break;
+                }
+                else if (second == null) {
+                    second = s;
+                    break;
+                }
+            }
+        }
     }
 
     public void setup() {
@@ -59,6 +79,7 @@ public class StarMap extends PApplet {
         loadStars();
         printStars();
         drawStars();
+
     }
 
     public void drawStars() {
@@ -70,5 +91,13 @@ public class StarMap extends PApplet {
     public void draw() {
         background(0);
         drawGrid();
+
+        if (first != null) {
+            float x = map(first.getxG(), -5, 5, border, width-border);
+            float y = map(first.getyG(), -5, 5, border, height-border);
+        
+            stroke(255, 255, 0);
+            line(x, y, mouseX, mouseY);
+        }
     }
 }
