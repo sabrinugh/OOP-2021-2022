@@ -1,6 +1,6 @@
 package ie.tudublin;
 import processing.core.PApplet;
-public class BugZap extends PApplet{
+public class BugZap extends PApplet {
     public void settings() {
         size(500,500);
     }
@@ -18,14 +18,17 @@ public class BugZap extends PApplet{
     Don't forget to set the stroke color!
     */
     public void drawPlayer (float x, float y, float w){
-        
+        stroke(0);
+        line((width/2)-(playerX/2), (height-playerY), (width/2)+(playerX), (height-playerY));
+
     }
 
     public void setup() {
-        // 
+        background(255, 255, 255);
+        draw();
     }
 
     public void draw() {
-        //
+        drawPlayer(playerX, playerY, playerWidth);
     }
 }
